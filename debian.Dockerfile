@@ -1,5 +1,5 @@
 ARG BASETAG=latest
-FROM postgres:$BASETAG
+FROM mongo:$BASETAG
 
 ARG GOCRONVER=v0.0.10
 ARG TARGETOS
@@ -10,20 +10,19 @@ RUN set -x \
 	&& chmod a+x /usr/local/bin/go-cron \
 	&& apt-get purge -y --auto-remove ca-certificates && apt-get clean
 
-ENV POSTGRES_DB="**None**" \
-    POSTGRES_DB_FILE="**None**" \
-    POSTGRES_HOST="**None**" \
-    POSTGRES_PORT=5432 \
-    POSTGRES_USER="**None**" \
-    POSTGRES_USER_FILE="**None**" \
-    POSTGRES_PASSWORD="**None**" \
-    POSTGRES_PASSWORD_FILE="**None**" \
-    POSTGRES_PASSFILE_STORE="**None**" \
-    POSTGRES_EXTRA_OPTS="-Z6" \
-    POSTGRES_CLUSTER="FALSE" \
+ENV MONGO_DB="**None**" \
+    MONGO_DB_FILE="**None**" \
+    MONGO_HOST="**None**" \
+    MONGO_PORT=27017 \
+    MONGO_USER="**None**" \
+    MONGO_USER_FILE="**None**" \
+    MONGO_PASSWORD="**None**" \
+    MONGO_PASSWORD_FILE="**None**" \
+    MONGO_PASSFILE_STORE="**None**" \
+    MONGO_EXTRA_OPTS="" \
     SCHEDULE="@daily" \
     BACKUP_DIR="/backups" \
-    BACKUP_SUFFIX=".sql.gz" \
+    BACKUP_SUFFIX=".archive" \
     BACKUP_KEEP_DAYS=7 \
     BACKUP_KEEP_WEEKS=4 \
     BACKUP_KEEP_MONTHS=6 \

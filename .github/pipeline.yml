@@ -1,0 +1,37 @@
+name: Build
+on:
+  push:
+    paths-ignore:
+      - "*.md"
+    branches:
+      - master
+
+env:
+  DOCKER_REPOSITORY: acouvreur/mongo-backup-local
+  CI: true
+
+jobs:
+  build:
+    name: Build Docker artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: install buildx
+        if: github.ref == 'refs/heads/master'
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+
+      - name: login
+        if: github.ref == 'refs/heads/master'
+        run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+  
+      - name: build the image
+        if: github.ref == 'refs/heads/master'
+        run: docker buildx build --push --tag ${{ env.DOCKER_REPOSITORY }}:latest --platform linux/amd64,linux/arm/v7,linux/arm64 -f debian.Dockerfile .
+
+      - name: build the alpine image
+        if: github.ref == 'refs/heads/master'
+        run: docker buildx build --push --tag ${{ env.DOCKER_REPOSITORY }}:latest --platform linux/amd64,linux/arm/v7,linux/arm64 -f alpine.Dockerfile .
