@@ -1,4 +1,4 @@
-![Docker Pulls](https://img.shields.io/docker/pulls/acouvreur/mongodb-backup-local)
+![Docker Pulls](https://img.shields.io/docker/pulls/acouvreur/mongo-backup-local)
 
 # mongodb-backup-local
 
