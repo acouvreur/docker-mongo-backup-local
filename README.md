@@ -1,6 +1,6 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/acouvreur/mongo-backup-local)
 
-# mongodb-backup-local
+# mongo-backup-local
 
 Backup MongoDB to the local filesystem with periodic rotating backups, based on [docker-postgres-backup-local](https://github.com/prodrigestivill/docker-postgres-backup-local).
 Backup multiple databases from the same host by setting the database names in `MONGO_DB` separated by commas or spaces.
