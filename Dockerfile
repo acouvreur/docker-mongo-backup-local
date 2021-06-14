@@ -35,5 +35,5 @@ VOLUME /backups
 ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["exec /usr/local/bin/go-cron -s \"$SCHEDULE\" -p \"$HEALTHCHECK_PORT\" -- /backup.sh"]
 
-HEALTHCHECK --interval=5m --timeout=3s \
+HEALTHCHECK --timeout=3s \
   CMD curl -f "http://localhost:$HEALTHCHECK_PORT/" || exit 1
