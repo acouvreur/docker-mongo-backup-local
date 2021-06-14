@@ -30,8 +30,8 @@ jobs:
   
       - name: build the image
         if: github.ref == 'refs/heads/master'
-        run: docker buildx build --push --tag ${{ env.DOCKER_REPOSITORY }}:latest --platform linux/amd64,linux/arm/v7,linux/arm64 -f debian.Dockerfile .
+        run: docker buildx build --push --tag ${{ env.DOCKER_REPOSITORY }}:latest --platform linux/amd64,linux/arm64/v8,linux/s390x -f debian.Dockerfile .
 
       - name: build the alpine image
         if: github.ref == 'refs/heads/master'
-        run: docker buildx build --push --tag ${{ env.DOCKER_REPOSITORY }}:latest --platform linux/amd64,linux/arm/v7,linux/arm64 -f alpine.Dockerfile .
+        run: docker buildx build --push --tag ${{ env.DOCKER_REPOSITORY }}:latest --platform linux/amd64,linux/arm64/v8,linux/s390x -f alpine.Dockerfile .
