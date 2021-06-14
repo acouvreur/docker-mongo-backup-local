@@ -62,7 +62,7 @@ for DB in ${MONGO_DBS}; do
   MFILE="${BACKUP_DIR}/monthly/${DB}-`date +%Y%m`${BACKUP_SUFFIX}"
   #Create dump
   echo "Creating dump of ${DB} database from ${MONGO_HOST}..."
-  mongodump -d "${DB}" -u "${MGUSER}" -p "${MGPASSWORD}" --authenticationDatabase=admin --archive "${DFILE}" --host=$MONGO_HOST --port=$MONGO_PORT ${MONGO_EXTRA_OPTS}
+  mongodump -d "${DB}" -u "${MGUSER}" -p "${MGPASSWORD}" --authenticationDatabase=admin --archive="${DFILE}" mongodb://$MONGO_HOST:$MONGO_PORT ${MONGO_EXTRA_OPTS}
   #Copy (hardlink) for each entry
   if [ -d "${DFILE}" ]; then
     WFILENEW="${WFILE}-new"
