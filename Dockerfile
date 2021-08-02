@@ -10,15 +10,15 @@ RUN set -x \
 	&& chmod a+x /usr/local/bin/go-cron \
 	&& apt-get purge -y --auto-remove ca-certificates && apt-get clean
 
-ENV MONGO_DB="**None**" \
-    MONGO_DB_FILE="**None**" \
-    MONGO_HOST="**None**" \
+ENV MONGO_DB=**None** \
+    MONGO_DB_FILE=**None** \
+    MONGO_HOST=**None** \
     MONGO_PORT=27017 \
-    MONGO_USER="**None**" \
-    MONGO_USER_FILE="**None**" \
-    MONGO_PASSWORD="**None**" \
-    MONGO_PASSWORD_FILE="**None**" \
-    MONGO_PASSFILE_STORE="**None**" \
+    MONGO_USER=**None** \
+    MONGO_USER_FILE=**None** \
+    MONGO_PASSWORD=**None** \
+    MONGO_PASSWORD_FILE=**None** \
+    MONGO_PASSFILE_STORE=**None** \
     MONGO_EXTRA_OPTS="" \
     SCHEDULE="@daily" \
     BACKUP_DIR="/backups" \
